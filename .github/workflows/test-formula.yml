@@ -40,3 +40,7 @@ jobs:
 
       - name: Audit formula
         run: brew audit --strict narsil-mcp
+
+      - name: Cleanup tap
+        if: always()
+        run: brew untap postrv/narsil || true
