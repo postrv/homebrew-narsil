@@ -1,23 +1,23 @@
 class NarsilMcp < Formula
   desc "Blazingly fast MCP server for code intelligence"
   homepage "https://github.com/postrv/narsil-mcp"
-  version "1.1.2-beta"
+  version "1.1.2"
   license "MIT OR Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/postrv/narsil-mcp/releases/download/v1.1.2-beta/narsil-mcp-v1.1.2-beta-macos-x86_64.tar.gz"
-      sha256 "ad3c6bf7bdb1d990264dca35f6d9fb411e07b489e6b5aa6c48bb72f4345491e7"
+      url "https://github.com/postrv/narsil-mcp/releases/download/v1.1.2/narsil-mcp-v1.1.2-macos-x86_64.tar.gz"
+      sha256 "a7786f5cdd055735120729bfabf334facaeb053af95af36c5d21c1a8889efa26"
     elsif Hardware::CPU.arm?
-      url "https://github.com/postrv/narsil-mcp/releases/download/v1.1.2-beta/narsil-mcp-v1.1.2-beta-macos-aarch64.tar.gz"
-      sha256 "7073ab2cd60534a13b7c75e5fd2a99cf36f486e554bc1585025c5f699d7729a0"
+      url "https://github.com/postrv/narsil-mcp/releases/download/v1.1.2/narsil-mcp-v1.1.2-macos-aarch64.tar.gz"
+      sha256 "d4d3aeb5c671dbc0ec715c7507616e461102f73ffeeeead722626153ae9fc92e"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/postrv/narsil-mcp/releases/download/v1.1.2-beta/narsil-mcp-v1.1.2-beta-linux-x86_64.tar.gz"
-      sha256 "b7a9b16dfd38192f3ee67f160e927bbe7ba55f1bec1b2bb7d0fe7c8a93f7d0da"
+      url "https://github.com/postrv/narsil-mcp/releases/download/v1.1.2/narsil-mcp-v1.1.2-linux-x86_64.tar.gz"
+      sha256 "c7eada17a7e30b29e555e547e92e249e9527bc4782160a090bf4ebbc09d8486d"
     end
   end
 
