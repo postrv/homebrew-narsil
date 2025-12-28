@@ -22,7 +22,10 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
 
       - name: Tap this repository
-        run: brew tap postrv/narsil "${{ github.workspace }}"
+        run: |
+          # Remove existing tap if present to avoid remote mismatch
+          brew untap postrv/narsil || true
+          brew tap postrv/narsil "${{ github.workspace }}"
 
       - name: Install formula
         run: brew install narsil-mcp
