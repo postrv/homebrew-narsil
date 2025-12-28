@@ -1,0 +1,39 @@
+name: Test Formula
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * 0' # Weekly on Sunday
+
+jobs:
+  test:
+    name: Test Formula
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Tap this repository
+        run: brew tap postrv/narsil "${{ github.workspace }}"
+
+      - name: Install formula
+        run: brew install narsil-mcp
+
+      - name: Test formula
+        run: brew test narsil-mcp
+
+      - name: Verify installation
+        run: |
+          which narsil-mcp
+          narsil-mcp --version
+
+      - name: Audit formula
+        run: brew audit --strict narsil-mcp
