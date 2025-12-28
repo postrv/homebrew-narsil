@@ -2,7 +2,7 @@ class NarsilMcp < Formula
   desc "Blazingly fast MCP server for code intelligence"
   homepage "https://github.com/postrv/narsil-mcp"
   version "1.1.3"
-  license "MIT OR Apache-2.0"
+  license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do
     if Hardware::CPU.intel?
@@ -23,11 +23,6 @@ class NarsilMcp < Formula
 
   def install
     bin.install "narsil-mcp"
-  end
-
-  test do
-    # Test that the binary exists and is executable
-    assert_match version.to_s, shell_output("#{bin}/narsil-mcp --version")
   end
 
   def caveats
@@ -69,5 +64,10 @@ class NarsilMcp < Formula
 
       Documentation: https://github.com/postrv/narsil-mcp
     EOS
+  end
+
+  test do
+    # Test that the binary exists and is executable
+    assert_match version.to_s, shell_output("#{bin}/narsil-mcp --version")
   end
 end
