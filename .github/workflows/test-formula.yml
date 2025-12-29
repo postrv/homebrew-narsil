@@ -12,19 +12,38 @@ jobs:
   test:
     name: Test Formula
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+      # Manual Homebrew setup instead of Homebrew/actions/setup-homebrew
+      # This avoids buggy post-cleanup scripts that fail on directory removal
+      - name: Set up Homebrew (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          # Homebrew is pre-installed on macOS runners
+          brew update
+
+      - name: Set up Homebrew (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          # Install Homebrew on Linux
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          echo "/home/linuxbrew/.linuxbrew/bin" >> $GITHUB_PATH
+
+      - name: Configure Homebrew path (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          echo "HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew" >> $GITHUB_ENV
 
       - name: Tap this repository
         run: |
           # Remove existing tap if present to avoid remote mismatch
-          brew untap postrv/narsil || true
+          brew untap postrv/narsil 2>/dev/null || true
           brew tap postrv/narsil "${{ github.workspace }}"
 
       - name: Install formula
@@ -45,7 +64,5 @@ jobs:
         if: always()
         run: |
           # Uninstall formula first, then untap
-          brew uninstall narsil-mcp || true
-          brew untap postrv/narsil || true
-          # Ensure the tap directory is fully removed to prevent post-action cleanup errors
-          rm -rf "$(brew --prefix)/Library/Taps/postrv/homebrew-narsil" || true
+          brew uninstall narsil-mcp 2>/dev/null || true
+          brew untap postrv/narsil 2>/dev/null || true
