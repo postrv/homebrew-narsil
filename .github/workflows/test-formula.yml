@@ -41,9 +41,11 @@ jobs:
       - name: Audit formula
         run: brew audit --strict narsil-mcp
 
-      - name: Cleanup tap
+      - name: Cleanup
         if: always()
         run: |
+          # Uninstall formula first, then untap
+          brew uninstall narsil-mcp || true
           brew untap postrv/narsil || true
           # Ensure the tap directory is fully removed to prevent post-action cleanup errors
           rm -rf "$(brew --prefix)/Library/Taps/postrv/homebrew-narsil" || true
