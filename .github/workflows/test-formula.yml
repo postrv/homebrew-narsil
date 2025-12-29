@@ -43,4 +43,7 @@ jobs:
 
       - name: Cleanup tap
         if: always()
-        run: brew untap postrv/narsil || true
+        run: |
+          brew untap postrv/narsil || true
+          # Ensure the tap directory is fully removed to prevent post-action cleanup errors
+          rm -rf "$(brew --prefix)/Library/Taps/postrv/homebrew-narsil" || true
