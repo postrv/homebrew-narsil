@@ -1,6 +1,7 @@
 name: Test Formula
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
   pull_request:
@@ -32,13 +33,13 @@ jobs:
         run: |
           # Install Homebrew on Linux
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          echo "/home/linuxbrew/.linuxbrew/bin" >> $GITHUB_PATH
+          echo "/home/linuxbrew/.linuxbrew/bin" >> "$GITHUB_PATH"
 
       - name: Configure Homebrew path (Linux)
         if: runner.os == 'Linux'
         run: |
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          echo "HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew" >> $GITHUB_ENV
+          echo "HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew" >> "$GITHUB_ENV"
 
       - name: Tap this repository
         run: |
