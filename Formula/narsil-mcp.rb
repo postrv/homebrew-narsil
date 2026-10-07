@@ -5,21 +5,21 @@ class NarsilMcp < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/postrv/narsil-mcp/releases/download/v1.7.1/narsil-mcp-v1.7.1-macos-x86_64.tar.gz"
-      sha256 "4eea1c65f7544454549aefe4be43747c92ce8250bc6e5252a5877127399985c0"
+      url "https://github.com/postrv/narsil-mcp/releases/download/v1.7.2/narsil-mcp-v1.7.2-macos-x86_64.tar.gz"
+      sha256 "5736177aaa6d3d5da9108978d7c6342f5b8d12c75948ddbda8a900be09a9d553"
     elsif Hardware::CPU.arm?
-      url "https://github.com/postrv/narsil-mcp/releases/download/v1.7.1/narsil-mcp-v1.7.1-macos-aarch64.tar.gz"
-      sha256 "fb536977b7992d6ac1bde80fb57f9d78e5691104bd3f7c11d1c9743c85b51d6f"
+      url "https://github.com/postrv/narsil-mcp/releases/download/v1.7.2/narsil-mcp-v1.7.2-macos-aarch64.tar.gz"
+      sha256 "f029c72e8e5b6225701cb3705827ae0ed2d414afb21ea670c45a17d83043d536"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/postrv/narsil-mcp/releases/download/v1.7.1/narsil-mcp-v1.7.1-linux-x86_64.tar.gz"
-      sha256 "704a9611b31cfe5675c87f21627466b6a3a1ba1e8bc582bc16764513f383bb36"
+      url "https://github.com/postrv/narsil-mcp/releases/download/v1.7.2/narsil-mcp-v1.7.2-linux-x86_64.tar.gz"
+      sha256 "f12be877f6dc9f067cd997920ba91408ef985fa94dbe7cf4c3d6b65270f591e4"
     elsif Hardware::CPU.arm?
-      url "https://github.com/postrv/narsil-mcp/releases/download/v1.7.1/narsil-mcp-v1.7.1-linux-aarch64.tar.gz"
-      sha256 "ff0b753aac85fcb2166bd8f57bd9d3b8b2a18ccc5b6b64101773c7c28cacd34d"
+      url "https://github.com/postrv/narsil-mcp/releases/download/v1.7.2/narsil-mcp-v1.7.2-linux-aarch64.tar.gz"
+      sha256 "52b717dff055c6551254127344cf1dd9852cc5eff47c204dabe8d0371959580c"
     end
   end
 
