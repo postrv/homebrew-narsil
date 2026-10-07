@@ -6,7 +6,7 @@ Official Homebrew tap for [narsil-mcp](https://github.com/postrv/narsil-mcp) - a
 
 ```bash
 brew tap postrv/narsil
-brew install narsil-mcp
+brew install postrv/narsil/narsil-mcp
 ```
 
 ## Usage
@@ -84,12 +84,12 @@ brew untap postrv/narsil
 ## Supported Platforms
 
 - macOS (Intel and Apple Silicon)
-- Linux (x86_64)
+- Linux (x86_64 and ARM64)
 
 ## Documentation
 
 See the [main repository](https://github.com/postrv/narsil-mcp) for full documentation, including:
-- All 76 available MCP tools
+- Code intelligence MCP tools
 - Advanced features (call graphs, security scanning, supply chain analysis)
 - LSP integration
 - Remote repository support

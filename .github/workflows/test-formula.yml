@@ -48,10 +48,11 @@ jobs:
           brew tap postrv/narsil "${{ github.workspace }}"
 
       - name: Install formula
-        run: brew install narsil-mcp
+        # The qualified name trusts only this formula on current Homebrew.
+        run: brew install postrv/narsil/narsil-mcp
 
       - name: Test formula
-        run: brew test narsil-mcp
+        run: brew test postrv/narsil/narsil-mcp
 
       - name: Verify installation
         run: |
@@ -59,11 +60,11 @@ jobs:
           narsil-mcp --version
 
       - name: Audit formula
-        run: brew audit --strict narsil-mcp
+        run: brew audit --strict postrv/narsil/narsil-mcp
 
       - name: Cleanup
         if: always()
         run: |
           # Uninstall formula first, then untap
-          brew uninstall narsil-mcp 2>/dev/null || true
+          brew uninstall postrv/narsil/narsil-mcp 2>/dev/null || true
           brew untap postrv/narsil 2>/dev/null || true
