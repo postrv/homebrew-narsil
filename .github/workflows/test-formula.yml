@@ -20,6 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Test manual formula updater
+        run: bash tests/update-formula.sh
+
       # Manual Homebrew setup instead of Homebrew/actions/setup-homebrew
       # This avoids buggy post-cleanup scripts that fail on directory removal
       - name: Set up Homebrew (macOS)

@@ -69,6 +69,17 @@ Create `.cursor/mcp.json` in your project:
 
 ## Updating
 
+The [Narsil release workflow](https://github.com/postrv/narsil-mcp/blob/main/.github/workflows/release.yml)
+automatically updates this formula and its archive checksums after each stable release.
+This tap's workflow verifies installation and runs the formula test and strict audit on macOS and Linux.
+It can also be run manually from the Actions tab.
+
+If an automatic update fails, maintainers can run `./update-formula.sh` with the
+published release tag. The helper verifies all four checksum sidecars before
+updating the formula, retains a backup, and leaves committing and pushing to the maintainer.
+
+To update an installed copy:
+
 ```bash
 brew update
 brew upgrade narsil-mcp
