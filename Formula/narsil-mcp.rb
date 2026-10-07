@@ -1,7 +1,6 @@
 class NarsilMcp < Formula
   desc "Blazingly fast MCP server for code intelligence"
   homepage "https://github.com/postrv/narsil-mcp"
-  version "1.7.1"
   license any_of: ["MIT", "Apache-2.0"]
 
   on_macos do

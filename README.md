@@ -6,7 +6,7 @@ Official Homebrew tap for [narsil-mcp](https://github.com/postrv/narsil-mcp) - a
 
 ```bash
 brew tap postrv/narsil
-brew install narsil-mcp
+brew install postrv/narsil/narsil-mcp
 ```
 
 ## Usage
@@ -69,6 +69,17 @@ Create `.cursor/mcp.json` in your project:
 
 ## Updating
 
+The [Narsil release workflow](https://github.com/postrv/narsil-mcp/blob/main/.github/workflows/release.yml)
+automatically updates this formula and its archive checksums after each stable release.
+This tap's workflow verifies installation and runs the formula test and strict audit on macOS and Linux.
+It can also be run manually from the Actions tab.
+
+If an automatic update fails, maintainers can run `./update-formula.sh` with the
+published release tag. The helper verifies all four checksum sidecars before
+updating the formula, retains a backup, and leaves committing and pushing to the maintainer.
+
+To update an installed copy:
+
 ```bash
 brew update
 brew upgrade narsil-mcp
@@ -84,12 +95,12 @@ brew untap postrv/narsil
 ## Supported Platforms
 
 - macOS (Intel and Apple Silicon)
-- Linux (x86_64)
+- Linux (x86_64 and ARM64)
 
 ## Documentation
 
 See the [main repository](https://github.com/postrv/narsil-mcp) for full documentation, including:
-- All 76 available MCP tools
+- Code intelligence MCP tools
 - Advanced features (call graphs, security scanning, supply chain analysis)
 - LSP integration
 - Remote repository support
